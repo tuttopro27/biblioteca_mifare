@@ -1,0 +1,8 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.14"
+    },
+    "require-dev": {
+        "rector/rector": "^0.7.41"
+    }
+}

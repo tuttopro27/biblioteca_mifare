@@ -1,0 +1,24 @@
+/* 
+    Document   : puc
+    Created on : Jan 24, 2014, 4:28:31 PM
+    Author     : francisco
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.validar_formulario{
+    display: none;
+}
+
+.selectuc{
+    width: 100%;
+    height: 60%;
+    border: 3px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    
+}
+.selectuc:focus{
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+}
