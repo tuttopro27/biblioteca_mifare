@@ -9,8 +9,8 @@ $this->load->view('menu');
     <div class="page-title">
         <h2><i class="glyphicon glyphicon-search" style="font-size: 25px;"></i><small>Buscar Codigo Mifare</small></h2><br>
         <ol class="breadcrumb">
-        <li><a href="<?= base_url() ?>Tarjeta">Inicio</a></li>
-		<li class="active">Buscar Información Codigo Mifare</li>
+            <li><a href="<?= base_url() ?>Tarjeta">Inicio</a></li>
+            <li class="active">Buscar Información Codigo Mifare</li>
         </ol>
         <div class="row">
             <div class="col-md-12">
@@ -54,29 +54,26 @@ $this->load->view('menu');
                                     <br>
                                     <br>
                                 </div>
-                                </div>
-                            </form>
-                            <br>
-                            <div class="row">
+                        </div>
+                        </form>
+                        <br>
+                        <div class="row">
                             <div class="col-md-10">
                                 <div class="table-responsive">
-                                <br>
+                                    <br>
                                     <?php
-
-                                    if (!isset($result)) {
-                                        $result = '';
+                                    if (!isset($cards)) {
+                                        $cards = '';
                                         //echo "Esta variable no está definida, y la defino como vacia";
                                     }
-
-                                    if ($result) {
-                                       
+                                    if ($cards) {
                                         echo '<center><table class="table table-bordered table-hover">';
                                         echo '<thead>';
                                         echo '<th scope="col" style="width: 200px; ">Codigo Mifare</th>';
                                         echo '<th scope="col">Codigo Barra</th>';
                                         echo '</thead>';
                                         echo '<tbody>';
-                                        foreach ($result->result() as $row) {
+                                        foreach ($cards->result() as $row) {
                                             echo '<tr>';
                                             echo '<td>' . $row->COD_MIFARE . '</td>';
                                             echo '<td>' . $row->CODIGO_BARRA . '</td>';
@@ -87,38 +84,32 @@ $this->load->view('menu');
                                         echo '</center>';
                                     }
                                     ?>
-                                    <br />
+                                        <br />
+                                        </div>
+                                    </div>
                                 </div>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
+</div>
 <?php
-	 $this->load->view('footer');
+$this->load->view('footer');
 ?>
 <script type="text/javascript">
-
-function validaBusqueda()
-  {
-    var query = document.getElementById("query").value;
-    if (query.length == 0 || query.length < 9 )
-    {
-      alert('Ingrese un codigo de tarjeta mifare valirdo, que tenga 8 caracteres');
-      return false;
+    function validaBusqueda() {
+        var query = document.getElementById("query").value;
+        if (query.length == 0 || query.length < 9) {
+            alert('Ingrese un codigo de tarjeta mifare valirdo, que tenga 8 caracteres');
+            return false;
+        }
     }
-  }
-
-    $('#buscamifare').submit(function(){
-          $(this).find('input:text').each(function(){
-                $(this).val($.trim($(this).val()));
-          });
+    $('#buscamifare').submit(function() {
+        $(this).find('input:text').each(function() {
+            $(this).val($.trim($(this).val()));
+        });
     });
-
-
 </script>

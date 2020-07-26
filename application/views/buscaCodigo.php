@@ -37,7 +37,7 @@ $this->load->view('menu');
                 <div class="awidget-body" id="usuarios_sistema">
                     <div class="row">
                         <div class="col-md-12">
-                            <form method="post" id="busca" action="<?= base_url() ?>tarjeta/buscacodigo" onsubmit="return validaForm();">
+                            <form method="post" id="busca" action="<?= base_url() ?>Tarjeta/buscacodigo" onsubmit="return validaForm();">
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="query">Codigo Barra</label>
                                     <div class="col-md-4">
@@ -50,7 +50,7 @@ $this->load->view('menu');
                                         <br>
                                         <center><button type="submit" id="buscacodigo" class="btn btn-success">Buscar Codigo</input></center>
                                     </div>
-                                    
+
                                     <br>
                                     <br>
                                 </div>
@@ -64,12 +64,12 @@ $this->load->view('menu');
                                     <?php
 
 
-if (!isset($resultado)) {
-    $resultado = '';
+if (!isset($cards)) {
+    $cards = '';
     //echo "Esta variable no está definida, y la defino como vacia";
 }
 
-if ($resultado) {
+if ($cards) {
 
     echo '<center><table class="table table-bordered table-hover">';
     echo '<thead>';
@@ -77,7 +77,7 @@ if ($resultado) {
     echo '<th scope="col">Codigo Mifare</th>';
     echo '</thead>';
     echo '<tbody>';
-    foreach ($resultado->result() as $row) {
+    foreach ($cards->result() as $row) {
         echo '<tr>';
         echo '<td>' . $row->CODIGO_BARRA. '</td>';
         echo '<td>' . $row->COD_MIFARE . '</td>';
@@ -88,7 +88,9 @@ if ($resultado) {
     echo '</table>';
 }
 ?>
-                                    <br />
+                                                <center>
+                                        </table>
+                                        <br />
                                 </div>
                             </div>
                         </div>
@@ -99,26 +101,22 @@ if ($resultado) {
     </div>
 </div>
 <?php
-	 $this->load->view('footer');
+$this->load->view('footer');
 ?>
 <script type="text/javascript">
+    function validaForm() {
+        var query = document.getElementById("query").value;
 
+        if (query.length == '' || query.length == 12) {
+            alert('Ingrese un codigo de barra valido de 12 caracteres');
+            return false;
+        }
 
-function validaForm()
-{
-    var query  = document.getElementById("query").value;
-
-    if (query.length == '' || query.length == 12 )
-       {
-           alert('Ingrese un codigo de barra valido de 12 caracteres');
-           return false;
-       }
-
-    $('#buscaCodigo').submit(function(){
-          $(this).find('input:text').each(function(){
+        $('#buscaCodigo').submit(function() {
+            $(this).find('input:text').each(function() {
                 $(this).val($.trim($(this).val()));
-          });
-    });
+            });
+        });
 
-}
+    }
 </script>

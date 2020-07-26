@@ -57,15 +57,13 @@ $this->load->view('menu');
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if (!isset($mifarecodBarra)) {
-                                        $mifarecodBarra = '';
-                                    }
-                                    if ($mifarecodBarra != False) {
-
-                                        foreach ($mifarecodBarra->result() as $row) {
+                                    if(count($tarjetas) > 0){
+                                        foreach ($tarjetas as $tarjeta) {
                                             echo "<tr>";
-                                            echo "<td>" . $row->COD_MIFARE . "</td>";
-                                            echo "<td>" . $row->CODIGO_BARRA . "</td>";
+                                            echo "<td>" . $tarjeta["COD_MIFARE"] . "</td>";
+                                            echo "<td>" . $tarjeta["CODIGO_BARRA"] . "</td>";
+                                           
+                                            
                                             //echo "<td> <input type='checkbox' name='cb-seleccionar'/></td> \n";
                                             //echo "<td> <input type='submit' name='Submit' value='Actualizar'/></td> \n";
                                             echo "</tr>";
@@ -123,10 +121,23 @@ $this->load->view('menu');
                             dataType: "json",
                             success: function(respuesta) {
                             console.log(respuesta);
-                            alert(respuesta.message);
+                            var No_Insertados='';
+                            if(respuesta.No_Insertados.length>0)
+                            {
+                                respuesta.No_Insertados.forEach(function (registro){
+                                    No_Insertados+= registro.codigo;
+                                    No_Insertados+= "->";
+                                    No_Insertados+= registro.description;
+                                    No_Insertados+= "\n";
+                                });
+                            
+                            }
+                            alert(respuesta.message + "\n" + No_Insertados);
+                           
                             $('#upload-file-wrapper').load('/biblioteca_mifare/import/getCardsTable',function(){
                                 console.log('la tabla fue recargada');
                                 createTable();
+
                             });
                              
                             },

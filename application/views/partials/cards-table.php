@@ -10,15 +10,13 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if (!isset($mifarecodBarra)) {
-                                        $mifarecodBarra = '';
-                                    }
-                                    if ($mifarecodBarra != False) {
-
-                                        foreach ($mifarecodBarra->result() as $row) {
+                                    if(count($tarjetas) > 0){
+                                        foreach ($tarjetas as $tarjeta) {
                                             echo "<tr>";
-                                            echo "<td>" . $row->COD_MIFARE . "</td>";
-                                            echo "<td>" . $row->CODIGO_BARRA . "</td>";
+                                            echo "<td>" . $tarjeta["COD_MIFARE"] . "</td>";
+                                            echo "<td>" . $tarjeta["CODIGO_BARRA"] . "</td>";
+                                           
+                                            
                                             //echo "<td> <input type='checkbox' name='cb-seleccionar'/></td> \n";
                                             //echo "<td> <input type='submit' name='Submit' value='Actualizar'/></td> \n";
                                             echo "</tr>";

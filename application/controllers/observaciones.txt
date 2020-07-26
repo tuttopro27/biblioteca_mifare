@@ -1,0 +1,28 @@
+
+
+1.- No acepta el ingreso de un nuevo Mifare con otro código de barra que ya exista. Un usuario puede tener varios dispositivos con mifare distintos.
+
+2.- No avisa los registros que no se pueden ingresar. Puede ser en el mismo Excel, pero el usuario debe saber que ingreso y que no y el motivo : mifare ya existe, mifare erróneo.
+Ejemplo :
+
+A1B1C1D1 800101 Ingresado
+
+A1B1C1XX 800101 Mifare erróneo
+
+A1B1C1D3 800102 Ingresado
+
+A1B1C1D4 800103 Ingresado 
+
+A1B1C1D5 800104 Ingresado
+
+A1B1CDD6 800555 Ingresado
+
+A1B1C1D7 800106 Mifare ya existe
+
+3.- Debe validar los mifare, largo 8 y números 0 a 9 y letras A a F.
+
+4.- Falta la autenticación, y tabla usuarios.
+
+5.- Hay que adaptarlo a Oracle para poder ponerlo en producción.
+
+ 
