@@ -47,6 +47,7 @@ class Import extends CI_Controller
             $config['max_size']             = 200;
             $this->load->library('upload', $config);
             //validar request
+            
             if (!$this->upload->do_upload('uploadFile')) {
                 throw new Exception($this->upload->display_errors());
             }
