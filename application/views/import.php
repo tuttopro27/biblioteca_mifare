@@ -137,7 +137,9 @@ $this->load->view('menu');
                             $('#upload-file-wrapper').load('/biblioteca_mifare/import/getCardsTable',function(){
                                 console.log('la tabla fue recargada');
                                 createTable();
-
+                                if(respuesta.fileName){
+                                    $('<a href="/biblioteca_mifare/import/downloadFile/?fileName='+respuesta.fileName+'" target="blank"></a>')[0].click();
+                                }
                             });
                              
                             },
