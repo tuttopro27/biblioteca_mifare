@@ -99,7 +99,8 @@ class Import extends CI_Controller
                 }
             }
             $writer = IOFactory::createWriter($spreadsheet, 'Xlsx'); 
-            $writer->save('/var/www/html/biblioteca_mifare/'.$fileName. '.xlsx');
+            //$writer->save('./biblioteca_mifare/temp/'.$fileName. '.xlsx');
+            $writer->save('C:/tmp/'.$fileName. '.xlsx');
             $result = false;
             if (isset($inserdata)) {
                 $result = $this->Tarjeta_Model->importData($inserdata);
@@ -123,17 +124,20 @@ class Import extends CI_Controller
     {
         
         $fileName = $_GET['fileName'];
-        if(file_exists("/var/www/html/biblioteca_mifare/".$fileName.".xlsx")){
+            //if(file_exists("./biblioteca_mifare/tmp/".$fileName.".xlsx")){
+            if(file_exists("C:/tmp/".$fileName.".xlsx")){
             /*header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             header('Content-Disposition: attachment;filename="'.$fileName.'.xlsx"');
             header('Cache-Control: max-age=0');  
             //readfile("/var/www/html/biblioteca_mifare/".$fileName.".xlsx");
             */
             $this->load->helper('download');
-            force_download("/var/www/html/biblioteca_mifare/".$fileName.".xlsx", NULL);
+            force_download("C:/tmp/".$fileName.".xlsx", NULL);
+            //force_download("./biblioteca_mifare/temp".$fileName.".xlsx", NULL);
         }
         else{
-            echo "archivo no encontrado  /var/www/html/biblioteca_mifare/".$fileName.".xlsx";
+            echo "archivo no encontrado  C:/tmp/".$fileName.".xlsx";
+            //echo "archivo no encontrado  ./biblioteca_mifare/temp/".$fileName.".xlsx";
         }
     }
 }
