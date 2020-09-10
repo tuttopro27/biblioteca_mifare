@@ -89,8 +89,8 @@ class Import extends CI_Controller
                 }
                 $qty = $this->Tarjeta_Model->findByCodMifare($cod_mifare)->num_rows();
                 if ($qty == 0) {
-                    $inserdata[$i]['cod_mifare'] = $cod_mifare;
-                    $inserdata[$i]['codigo_barra'] = $cod_barra;
+                    $inserdata[$i]['COD_MIFARE'] = $cod_mifare;
+                    $inserdata[$i]['CODIGO_BARRA'] = $cod_barra;
                     $spreadsheet->getActiveSheet()->setCellValue('C' . ($j+1), "exitoso");
                     $i++;
                 } else {

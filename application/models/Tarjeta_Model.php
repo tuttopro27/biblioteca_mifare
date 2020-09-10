@@ -49,7 +49,7 @@ class Tarjeta_Model extends CI_Model
     }
     public function findByCodMifare($cod_mifare){
         
-        return $this->db->get_where('OTRAS_TARJETAS',['cod_mifare'=>$cod_mifare]);
+        return $this->db->get_where('OTRAS_TARJETAS',['COD_MIFARE'=>$cod_mifare]);
 
     }
 
